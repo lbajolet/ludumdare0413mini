@@ -1,1 +1,1 @@
-Sample Readme.prout
+Sample Readme.prouts
