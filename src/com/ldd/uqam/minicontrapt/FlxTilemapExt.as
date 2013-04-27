@@ -1,4 +1,4 @@
-package com.ldd.uqam.minicontrapt
+package 
 {
 	import org.flixel.*;
 	import org.flixel.system.FlxTile;
