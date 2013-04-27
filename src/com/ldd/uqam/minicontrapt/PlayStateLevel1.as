@@ -15,10 +15,10 @@ package
 	{
 		public var button:FlxButton;
 		private var crate:Dromadaire;
-		[Embed(source = 'assets/chameauTroie.png')] private var cratePNG:Class;
+		[Embed(source = 'Assets/chameauTroie.png')] private var cratePNG:Class;
 		
-		[Embed(source = 'assets/TS.png')] private var ImgTiles:Class;
-		[Embed(source = 'assets/tm.txt', mimeType = "application/octet-stream")] private var DataMap:Class;
+		[Embed(source = 'Assets/TS.png')] private var ImgTiles:Class;
+		[Embed(source = 'Assets/tm.txt', mimeType = "application/octet-stream")] private var DataMap:Class;
 		private var _map:FlxTilemapExt;
 		
 		public static var lyrStage:FlxGroup;
