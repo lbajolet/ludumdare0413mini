@@ -15,23 +15,38 @@ package com.ldd.uqam.minicontrapt
 		{
 			super(x_pos, y_pos);
 			this.loadGraphic(circle_img);
-			this.maxVelocity.x = 150;
-			this.maxVelocity.y = 600;
+			this.maxVelocity.x = 200;
+			this.maxVelocity.y = 400;
 			this.angularVelocity = 0;
 			this.maxAngular = 500;
 		}
 		
 		override public function update(): void 
 		{
-			if (FlxG.keys.RIGHT) {
-				this.angularAcceleration = 250;
-				this.acceleration.x = 35;
-			}else if (FlxG.keys.LEFT) {
-				this.angularAcceleration = -250;
-				this.acceleration.x = -35;
+			if (this.velocity.x > 0) {
+				if (FlxG.keys.RIGHT) {
+					this.angularAcceleration = 250;
+					this.acceleration.x = 85;
+				}else if (FlxG.keys.LEFT) {
+					this.angularAcceleration = -400;
+					this.acceleration.x = -160;
+				}
+			} else {
+				if (FlxG.keys.RIGHT) {
+					this.angularAcceleration = 400;
+					this.acceleration.x = 160;
+				}else if (FlxG.keys.LEFT) {
+					this.angularAcceleration = -250;
+					this.acceleration.x = -85;
+				}
 			}
 			
-			//Collision handling
+			if (!FlxG.keys.LEFT && !FlxG.keys.RIGHT) {
+				this.acceleration.x = -this.acceleration.x / 2;
+				this.angularAcceleration = -this.angularAcceleration / 2;
+			}
+			
+			//Map Collision handling
 			if (this.isTouching(FLOOR)) {
 				this.acceleration.y = 0;
 			}else {
@@ -39,6 +54,7 @@ package com.ldd.uqam.minicontrapt
 			}
 			if (this.isTouching(WALL)) {
 				this.acceleration.x = 0;
+				this.angularVelocity = 0;
 			}
 			
 			super.update();

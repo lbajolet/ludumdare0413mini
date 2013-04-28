@@ -15,10 +15,10 @@ package com.ldd.uqam.minicontrapt
 	{
 		public var button:FlxButton;
 		private var crate:Dromadaire;
-		[Embed(source = 'Assets/chameauTroie.png')] private var cratePNG:Class;
+		[Embed(source = '../../../../../Assets/chameauTroie.png')] private var cratePNG:Class;
 		
-		[Embed(source = 'Assets/TS.png')] private var ImgTiles:Class;
-		[Embed(source = 'Assets/tm.txt', mimeType = "application/octet-stream")] private var DataMap:Class;
+		[Embed(source = '../../../../../Assets/Level1tileSet.png')] private var ImgTiles:Class;
+		[Embed(source = '../../../../../Assets/Level1Map.txt', mimeType = "application/octet-stream")] private var DataMap:Class;
 		private var _map:FlxTilemapExt;
 		
 		public static var lyrStage:FlxGroup;
@@ -31,26 +31,20 @@ package com.ldd.uqam.minicontrapt
 			_map.loadMap(new DataMap, ImgTiles,16); 
 			lyrStage = new FlxGroup;
 			
-			/*var tempFL:Array = new Array(3,4,8,16,24);
+			var tempFL:Array = new Array(3,4,8,16,24);
 			var tempFR:Array = new Array(2,5,9,17,25,10,18,11);
 			var tempCL:Array = new Array();
-			var tempCR:Array = new Array();*/
-			var tempFL:Array = new Array("4");
-			var tempFR:Array = new Array("5");
-			var tempCL:Array = new Array();
 			var tempCR:Array = new Array();
+		
 			_map.setSlopes(tempFL, tempFR, tempCL, tempCR);
 
             lyrStage.add(_map);
 			_map.immovable = true;
 			this.add(lyrStage);
-			add(new FlxText(0, 0, 100, "Hello, World!")); //adds a 100px wide text field at position 0,0 (upper left)
-			button = new FlxButton(5, 250, "Le button -------------------", null);
-			button.immovable = true;
-			add(button);
-			crate = new Dromadaire(50,200, cratePNG);
+			var circle_player = new CirclePlayer(0, 0);
+			//crate = new Dromadaire(50,200, cratePNG);
 			//crate.solid = crate.immovable = true;
-			add(crate);
+			add(circle_player);
 			/*var rect = new FlxRect(500, 0, 500, 10);
 			var graph = new flixel*/
 			FlxG.bgColor = 0xffffffff;
