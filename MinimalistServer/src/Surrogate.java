@@ -34,7 +34,6 @@ public class Surrogate implements Runnable{
 			boolean done = false;
 			while (!done) {
 				String str = readerIn.readLine();
-				
 				if (str == null) {
 					done = true;
 				} else {

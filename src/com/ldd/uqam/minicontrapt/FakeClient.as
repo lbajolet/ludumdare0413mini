@@ -15,8 +15,8 @@ package com.ldd.uqam.minicontrapt
 			module.addEventListener(NetworkModule.NETWORK_ERROR, onNetworkError);
 			
 			
+			module.SendMessage("Hello world1\n");
 			module.SendMessage("Hello world\n");
-			module.SendMessage("Hello world2\n");
 			module.SendMessage("Hello world3\n");
 			//module.SendMessage("EXIT\n");
 			
