@@ -3,6 +3,8 @@ package com.ldd.uqam.minicontrapt {
 
 	public class Minicontrapt extends Sprite {
 		public function Minicontrapt() {
+			var game:MinimalistGame = new MinimalistGame();
+			
 		}
 	}
 }
