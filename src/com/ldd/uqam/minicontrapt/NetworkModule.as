@@ -41,6 +41,7 @@ package com.ldd.uqam.minicontrapt
 		public function SendMessage(message:String):void
 		{
 			_socket.send(message);
+			
 			//_socket.writeUTFBytes(message);
 			trace("sent : " + message);
 		}
