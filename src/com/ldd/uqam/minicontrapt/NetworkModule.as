@@ -1,6 +1,6 @@
 package com.ldd.uqam.minicontrapt 
 {
-	import flash.net.Socket;
+	import flash.net.XMLSocket;
 	import flash.events.*;
 	import flash.system.Security;
 	/**
@@ -13,7 +13,7 @@ package com.ldd.uqam.minicontrapt
 		public static var MSG_RECV:String = "MessageReceived";
 		public static var NETWORK_ERROR:String = "NetworkError";
 		
-		private var _socket:Socket;
+		private var _socket:XMLSocket;
 		private var _opened:Boolean = false;
 		private var _receivedQueue:Queue = new Queue();
 		private var _observers:Array = new Array();
@@ -26,7 +26,7 @@ package com.ldd.uqam.minicontrapt
 			super();
 			Security.allowDomain("*");
 			Security.allowInsecureDomain("*");
-			_socket = new Socket(client.getIp(), client.getPort());
+			_socket = new XMLSocket(client.getIp(), client.getPort());
 			_socket.addEventListener(Event.CONNECT, onConnect);
 			_socket.addEventListener(DataEvent.DATA, onData);
 			_socket.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onSecurityError);
@@ -40,8 +40,9 @@ package com.ldd.uqam.minicontrapt
 		*/
 		public function SendMessage(message:String):void
 		{
-				_socket.writeUTFBytes(message);
-				trace("sent : " + message);
+			_socket.send(message);
+			//_socket.writeUTFBytes(message);
+			trace("sent : " + message);
 		}
 		
 		/**
@@ -80,10 +81,9 @@ package com.ldd.uqam.minicontrapt
 			return _opened;
 		}
 		
-		
-		
 		private function onData(e:DataEvent):void
 		{
+			trace("onData Called");
 			_receivedQueue.write(e.data);
 			dispatchEvent(new CommunicationEvent(MSG_RECV, e.data, new Message(), false, false));
 			trace(e.data);
@@ -100,8 +100,8 @@ package com.ldd.uqam.minicontrapt
 		private function onConnect(e:Event):void
 		{
 			_opened = true;
-			SendMessage("Connexion Ouverte et event leve");
-			trace("Connected");
+			//SendMessage("Connexion Ouverte et event leve");
+			trace("Client Socket Connected");
 		}
 		
 		private function onIOError(e:IOErrorEvent)

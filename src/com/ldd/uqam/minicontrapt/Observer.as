@@ -1,6 +1,5 @@
 package com.ldd.uqam.minicontrapt 
 {
-	
 	/**
 	 * ...
 	 * @author Squelos
