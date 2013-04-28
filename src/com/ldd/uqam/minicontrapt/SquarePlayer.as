@@ -61,5 +61,4 @@ package com.ldd.uqam.minicontrapt
 			super.update();
 		}
 	}
-
 }

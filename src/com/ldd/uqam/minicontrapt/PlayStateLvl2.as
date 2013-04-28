@@ -5,6 +5,7 @@ package com.ldd.uqam.minicontrapt
 	public class PlayStateLvl2 extends FlxState
 	{
 		public var p1:SquarePlayer;
+		public var p2:SecondPlayer;
 		public var ascenseur:FlxSprite;
 		public var dropSol1:FlxSprite;
 		public var dropSol2:FlxSprite;
@@ -100,19 +101,41 @@ package com.ldd.uqam.minicontrapt
 			p1 = new SquarePlayer(50,50);
 			add(p1);
 			
+			p2 = new SecondPlayer(255,50);
+			add(p2);
+			
 			FlxG.camera.follow(p1, 1);
 		}
 		
 		override public function update():void
 		{
+			var activerAsc:Boolean;
+			var activerDrp1:Boolean;
+			var activerDrp2:Boolean;
+			var finNiveau:Boolean;
+			
+			var activerDrp1P2:Boolean;
+			var activerDrp2P2:Boolean;;
+			
 			FlxG.collide(p1, _map);
+			FlxG.collide(p1, p2);
 			FlxG.collide(p1, addPlatform1);
 			FlxG.collide(p1, addPlatform2);
 			
-			var activerAsc:Boolean = FlxG.collide(p1, ascenseur);
-			var activerDrp1:Boolean = FlxG.collide(p1, dropSol1);
-			var activerDrp2:Boolean = FlxG.collide(p1, dropSol2);
-			var finNiveau:Boolean = FlxG.collide(p1, door);
+			activerAsc = FlxG.collide(p1, ascenseur);
+			activerDrp1 = FlxG.collide(p1, dropSol1);
+			activerDrp2 = FlxG.collide(p1, dropSol2);
+			finNiveau = FlxG.collide(p1, door);
+			
+			FlxG.collide(p2, _map);
+			FlxG.collide(p2, p1);
+			FlxG.collide(p2, ascenseur);
+			FlxG.collide(p2, addPlatform1);
+			FlxG.collide(p2, addPlatform2);
+			
+			activerDrp1P2 = FlxG.collide(p2, dropSol1);
+			activerDrp2P2 = FlxG.collide(p2, dropSol2);
+			finNiveau = FlxG.collide(p2, door);
 			
 			if (btnActivate == false) {
 				var activerInter:Boolean = FlxG.collide(p1, interrupteur);
@@ -125,7 +148,7 @@ package com.ldd.uqam.minicontrapt
 				ascenseur.acceleration.y = 50;
 				ascenseur.maxVelocity.y = 100;
 			}
-			if (activerDrp1 == true) {
+			if (activerDrp1 == true || activerDrp1P2 == true) {
 				dropSol1.maxVelocity.y = 80;
 				dropSol1.acceleration.y = 80;
 			}
@@ -135,7 +158,7 @@ package com.ldd.uqam.minicontrapt
 				dropSol1.maxVelocity.y = 0;
 				dropSol1.velocity.y = 0;
 			}
-			if (activerDrp2 == true) {
+			if (activerDrp2 == true || activerDrp2P2 == true) {
 				dropSol2.maxVelocity.y = 80;
 				dropSol2.acceleration.y = 80;
 			}
@@ -156,6 +179,9 @@ package com.ldd.uqam.minicontrapt
 				
 				add(addPlatform1);
 				add(addPlatform2);
+				
+				p2.x = 528;
+				p2.y = 80
 			}
 			super.update();
 		}

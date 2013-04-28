@@ -2,7 +2,7 @@ package com.ldd.uqam.minicontrapt
 {
 	import org.flixel.*;
  
-	public class PlayState extends FlxState
+	public class PlayStateDeTest extends FlxState
 	{
 		public var p1:SquarePlayer;
 		public var sol:FlxSprite;
@@ -88,7 +88,21 @@ package com.ldd.uqam.minicontrapt
 				dropSol2.maxVelocity.y = 80;
 				dropSol2.acceleration.y = 80;
 			}
+			
+			if (dropSol.y > 600)
+			{
+				dropSol.y = 350;
+				dropSol.maxVelocity.y = 0;
+				dropSol.velocity.y = 0;
+			}
+			if (dropSol2.y > 600)
+			{
+				dropSol2.y = 320;
+				dropSol2.maxVelocity.y = 0;
+				dropSol2.velocity.y = 0;
+			}
 			super.update();
 		}
 	}
-}
+
+	
