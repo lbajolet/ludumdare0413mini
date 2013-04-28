@@ -34,9 +34,13 @@ public class Surrogate implements Runnable{
 			boolean done = false;
 			while (!done) {
 				String str = readerIn.readLine();
-				if (str == null) {
+				str = str.trim();
+				
+				if (str == null)
+				{
 					done = true;
-				} else {
+				}
+				else {
 					out("Echo: " + str + "\r");
 					
 					output.println(str + " " + str);
