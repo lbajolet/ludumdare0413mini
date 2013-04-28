@@ -7,11 +7,8 @@ package com.ldd.uqam.minicontrapt
 	{
 		public function Main()
 		{
-<<<<<<< HEAD
-			super(640,480,PlayStateLevel1,1);
-=======
-			super(640,480,PlayState,1);
->>>>>>> 5de319a964c5b1aca64d860ed08f769ec92f63d9
+			super(640, 480, PlayStateLevel1, 1);
+			forceDebugger = true;
 		}
 	}
 }
