@@ -1,4 +1,4 @@
-package 
+package com.ldd.uqam.minicontrapt
 {
 	import org.flixel.*; //Allows you to refer to flixel objects in your code
 	[SWF(width="640", height="480", backgroundColor="#000000")] //Set the size and color of the Flash file

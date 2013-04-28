@@ -1,4 +1,4 @@
-package 
+package com.ldd.uqam.minicontrapt
 {
 	import mx.core.FlexApplicationBootstrap;
 	import org.flixel.*;

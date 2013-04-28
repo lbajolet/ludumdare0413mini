@@ -1,4 +1,4 @@
-package 
+package com.ldd.uqam.minicontrapt
 {
 	/**
 	 * ...
