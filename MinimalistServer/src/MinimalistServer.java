@@ -8,6 +8,8 @@ import java.util.List;
 
 public class MinimalistServer {
 
+	private static MinimalistServer instance_;
+	private static Object syncObject_;
 	private int _port = 8080;
 	private ServerSocket serverSocket;
 	private Socket incoming;
@@ -15,7 +17,10 @@ public class MinimalistServer {
 	private PrintStream printOut;
 	private static MinimalistServer server;
 	
+	
 	private List<Socket> _sockets = new ArrayList<Socket>();
+	private List<Runnable> _surrogates = new ArrayList<Runnable>();
+	private List<Thread> _threads = new ArrayList<Thread>();
 	
 	public static void main(String[] args)
     {
@@ -23,40 +28,51 @@ public class MinimalistServer {
         server = new MinimalistServer(port);
     }
 
-	public MinimalistServer(int port) {
+	 private MinimalistServer() {
+		   
+		  }
+	
+	private MinimalistServer(int port) {
 		this._port = port;
 		System.out.println("Starting the Server on port : " + port);
 		try {
 			serverSocket = new ServerSocket(port);
 			//méthode blocante
-			incoming = serverSocket.accept();
-			
-			readerIn = new BufferedReader(new InputStreamReader(
-					incoming.getInputStream()));
-			printOut = new PrintStream(incoming.getOutputStream());
-			printOut.println("Enter EXIT to exit.\r");
-			out("Enter EXIT to exit.\r");
-			boolean done = false;
-			while (true) {
-				String str = readerIn.readLine();
-				
-				if (str == null) {
-					done = true;
-				} else {
-					out("Echo: " + str + "\r");
-					if (str.trim().equals("EXIT")) {
-						done = true;
-						break;
-					}
-				}
+			//incoming = serverSocket.accept();
+			//while the application is running
+			//any new requests are accepted and stored
+			Socket tmpSocket = null;
+			while (true)
+			{
+				tmpSocket = serverSocket.accept();
+				_sockets.add(tmpSocket);
+				Runnable r = new Surrogate(tmpSocket);
+				_surrogates.add(r);
+				Thread t = new Thread(r);
+				_threads.add(t);
+				t.start();
 			}
-			incoming.close();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	} 
+	
+	 public static MinimalistServer getInstance() {
 
-	private void out(String str) {
-		System.out.println(str);
-	}
+		    /* in a non-thread-safe version of a Singleton   */
+		    /* the following line could be executed, and the */ 
+		    /* thread could be immediately swapped out */
+		    if (instance_ == null) {
+
+		      synchronized(syncObject_) {
+
+		        if (instance_ == null) {
+		           instance_ = new MinimalistServer();
+		        }
+
+		      }
+
+		    }
+		    return instance_;
+		  }
 }
