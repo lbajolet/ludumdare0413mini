@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 
@@ -25,16 +27,21 @@ public class Surrogate implements Runnable{
 			readerIn = new BufferedReader(new InputStreamReader(
 					_socket.getInputStream()));
 			printOut = new PrintStream(_socket.getOutputStream());
+			PrintWriter output = new PrintWriter(_socket.getOutputStream(),true);
+			
 			printOut.println("Enter EXIT to exit.\r");
 			out("Enter EXIT to exit.\r");
 			boolean done = false;
-			while (true) {
+			while (!done) {
 				String str = readerIn.readLine();
 				
 				if (str == null) {
 					done = true;
 				} else {
 					out("Echo: " + str + "\r");
+					
+					output.println(str + " " + str);
+					output.write("test", 0, 4);
 					if (str.trim().equals("EXIT")) {
 						done = true;
 						break;
