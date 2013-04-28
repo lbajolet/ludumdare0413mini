@@ -1,6 +1,7 @@
 package com.ldd.uqam.minicontrapt 
 {
 	import flash.display.Sprite;
+	import flash.events.Event;
 	/**
 	 * ...
 	 * @author Squelos
@@ -15,6 +16,17 @@ package com.ldd.uqam.minicontrapt
 			module.SendMessage("Hello world3\n");
 			module.SendMessage("EXIT\n");
 			
+			module.addEventListener(NetworkModule.MSG_RECV, onReceivedMessage);
+			module.addEventListener(NetworkModule.NETWORK_ERROR, onNetworkError);
+		}
+		
+		private function onReceivedMessage(e:Event):void
+		{
+			
+		}
+		
+		private function onNetworkError(e:Event):void
+		{
 			
 		}
 	}

@@ -8,15 +8,22 @@ package com.ldd.uqam.minicontrapt
 	 * server and the other players
 	 * @author Squelos
 	 */
-	public class NetworkModule 
+	public class NetworkModule extends EventDispatcher implements Subject
 	{
+		public static var MSG_RECV:String = "MessageReceived";
+		public static var NETWORK_ERROR:String = "NetworkError";
+		
 		private var _socket:Socket;
 		private var _opened:Boolean = false;
+		private var _receivedQueue:Queue = new Queue();
+		private var _observers:Array = new Array();
+		
 		
 		//instanciates a NetworkModule and establishes the connection
 		//with the specified peer client
 		public function NetworkModule(client:Client) 
 		{ 
+			super();
 			Security.allowDomain("*");
 			Security.allowInsecureDomain("*");
 			_socket = new Socket(client.getIp(), client.getPort());
@@ -33,15 +40,8 @@ package com.ldd.uqam.minicontrapt
 		*/
 		public function SendMessage(message:String):void
 		{
-			//if (!_opened)
-			//{
-			//	throw new Error("Connection not opened");
-			//}
-			//else
-			//{
 				_socket.writeUTFBytes(message);
 				trace("sent : " + message);
-			//}
 		}
 		
 		/**
@@ -54,6 +54,24 @@ package com.ldd.uqam.minicontrapt
 		}
 		
 		/**
+		 *  Returns the Message data on top of the queue without removing it
+		 * @return The string data 
+		 */
+		public function PeekMessage():String
+		{
+			return _receivedQueue.spy();
+		}
+		
+		/**
+		 * Returns the first message in the queue and removes it
+		 * @return The message on top of the queue
+		 */
+		public function GetMessage():String
+		{
+			return _receivedQueue.read();
+		}
+		
+		/**
 		 * 
 		 * @return true if the sockets connection is established
 		 */
@@ -62,8 +80,12 @@ package com.ldd.uqam.minicontrapt
 			return _opened;
 		}
 		
+		
+		
 		private function onData(e:DataEvent):void
 		{
+			_receivedQueue.write(e.data);
+			dispatchEvent(new CommunicationEvent(MSG_RECV, e.data, new Message(), false, false));
 			trace(e.data);
 		}
 		
@@ -72,6 +94,7 @@ package com.ldd.uqam.minicontrapt
 			trace(e.text);
 			CloseConnection();
 			trace("SecurityError Occured, Closing connection NOW !");
+			dispatchEvent(new Event(NETWORK_ERROR, false, false));
 		}
 	
 		private function onConnect(e:Event):void
@@ -85,6 +108,26 @@ package com.ldd.uqam.minicontrapt
 		{
 			CloseConnection();
 			trace("IO Error Occured, Closing connection NOW !");
+			var stuff:Event = new Event("Stuff");
+			
+			dispatchEvent(new Event(NETWORK_ERROR, false, false));
+		}
+		
+		/* INTERFACE com.ldd.uqam.minicontrapt.Subject */
+		
+		public function registerObserver(observer:Observer):void 
+		{
+			_observers.push(observer);
+		}
+		
+		public function removeObserver(observer:Observer):void 
+		{		
+			_observers.splice(_observers.indexOf(observer, 0), 1);
+		}
+		
+		public function notifyObservers():void 
+		{
+			(_observers[0] as Observer).update("Message Arrived");
 		}
 	}
 }
