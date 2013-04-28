@@ -10,7 +10,7 @@ public class MinimalistServer {
 
 	private static MinimalistServer instance_;
 	private static Object syncObject_;
-	private int _port = 8080;
+	private static int _port = 8080;
 	private ServerSocket serverSocket;
 	private Socket incoming;
 	private BufferedReader readerIn;
@@ -24,8 +24,7 @@ public class MinimalistServer {
 	
 	public static void main(String[] args)
     {
-        int port = 8080;
-        server = new MinimalistServer(port);
+        server = new MinimalistServer(_port);
     }
 
 	 private MinimalistServer() {
