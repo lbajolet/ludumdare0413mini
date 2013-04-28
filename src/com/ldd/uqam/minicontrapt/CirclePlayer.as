@@ -9,34 +9,39 @@ package com.ldd.uqam.minicontrapt
 	 */
 	public class CirclePlayer extends FlxSprite
 	{
-		[Embed(source = '../../../../../Assets/Circle.png')] private var triangle_img:Class;
+		[Embed(source = '../../../../../Assets/Circle.png')] private var circle_img:Class;
 		
-		public function CirclePlayer(x_pos: int, y_pos: int, width: int, height: int)
+		public function CirclePlayer(x_pos: int, y_pos: int)
 		{
 			super(x_pos, y_pos);
-			//Draw triangle
-			this.loadGraphic(triangle_img);
-			this.maxVelocity.x = 120;
-			this.maxVelocity.y = 200;
-			this.acceleration.y = 200;
+			this.loadGraphic(circle_img);
+			this.maxVelocity.x = 150;
+			this.maxVelocity.y = 600;
 			this.angularVelocity = 0;
 			this.maxAngular = 500;
-			this.drag.x = this.maxVelocity.x * 4;
 		}
 		
 		override public function update(): void 
 		{
 			if (FlxG.keys.RIGHT) {
-				this.angularAcceleration = 100;
+				this.angularAcceleration = 250;
 				this.acceleration.x = 35;
 			}else if (FlxG.keys.LEFT) {
-				this.angularAcceleration = -100;
+				this.angularAcceleration = -250;
 				this.acceleration.x = -35;
 			}
 			
 			//Collision handling
+			if (this.isTouching(FLOOR)) {
+				this.acceleration.y = 0;
+			}else {
+				this.acceleration.y = 200;
+			}
+			if (this.isTouching(WALL)) {
+				this.acceleration.x = 0;
+			}
+			
+			super.update();
 		}
-		
 	}
-
 }
