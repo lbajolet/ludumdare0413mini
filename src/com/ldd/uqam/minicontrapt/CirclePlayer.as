@@ -62,6 +62,10 @@ package com.ldd.uqam.minicontrapt
 					this.acceleration.x = -x_accel_no_touch_same_dir;
 				}
 			}
+			if (!FlxG.keys.LEFT && !FlxG.keys.RIGHT) {
+				this.angularAcceleration = 0;
+				this.acceleration.x = 0;
+			}
 		}
 		
 		private function set_accel_when_touching(): void {
