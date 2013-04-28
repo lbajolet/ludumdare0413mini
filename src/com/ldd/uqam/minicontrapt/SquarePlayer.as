@@ -18,7 +18,6 @@ package com.ldd.uqam.minicontrapt
 			this.x = x;
 			this.y = y;
 			enSaut = true;
-			//positionY = 320;//this.y;
 		}
 		
 		override public function update():void
@@ -35,14 +34,13 @@ package com.ldd.uqam.minicontrapt
 			
 			if (FlxG.keys.justPressed("SPACE") && enSaut == false)
 			{
-				//positionY = this.y;
 				enSaut = true
-				this.acceleration.y = 110;
-				this.maxVelocity.y = -200;
+				this.acceleration.y = 200;
+				this.maxVelocity.y = -90;
 			}
-			if (this.y < positionY - 10 && enSaut == true)
+			if (this.y < positionY - 15 && enSaut == true)
 			{
-				this.maxVelocity.y = 100;
+				this.maxVelocity.y = 400;
 			}
 			
 			if (this.isTouching(FLOOR) == true) {
@@ -52,13 +50,13 @@ package com.ldd.uqam.minicontrapt
 				positionY = this.y;
 			}
 			if (this.isTouching(FLOOR) == false && enSaut == false) {
-				this.acceleration.y = 80;
-				this.maxVelocity.y = 100;
+				this.acceleration.y = 300;
+				this.maxVelocity.y = 300;
 				//enSaut = true;
 			}
-			if (this.isTouching(WALL) == true) {
-				positionY = this.y;
-				enSaut = false;
+			
+			if (this.isTouching(UP)) {
+				this.maxVelocity.y = 400;
 			}
 			super.update();
 		}
