@@ -152,7 +152,7 @@ package com.ldd.uqam.minicontrapt
 			add(this.deathLine);
 			
 			
-			p1 = new SquarePlayer(20, 20);
+			p1 = new SquarePlayer(30, 370);
 			add(p1);
 			
 			FlxG.camera.zoom = 1.5;

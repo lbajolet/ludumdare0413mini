@@ -23,6 +23,8 @@ package com.ldd.uqam.minicontrapt
 		public var dropSol8:FlxSprite;
 		public var door:FlxSprite;
 		public var staticSprite:FlxSprite;
+		
+		private var deathLine: FlxGroup;
 			
 		
 		[Embed(source = '../../../../../Assets/Level4.png')] private var ImgTiles:Class;
@@ -138,12 +140,21 @@ package com.ldd.uqam.minicontrapt
 			p1 = new SquarePlayer(50,350);
 			add(p1);
 			
+			this.deathLine = RedSquareOfDeath.create_death_line(720, 450);
+			add(this.deathLine);
+			
 			FlxG.camera.zoom = 2;
 			FlxG.camera.follow(p1, 2);
 		}
 		
 		override public function update():void
 		{
+			if (FlxG.collide(p1, deathLine)) {
+				p1.respawn();
+				monster.x = -320;
+				monster.y = 335;
+			}
+			
 			var activerDrp1:Boolean;
 			var activerDrp2:Boolean;
 			var activerDrp3:Boolean;

@@ -100,7 +100,7 @@ package com.ldd.uqam.minicontrapt
 			this.monstertimer.addEventListener(TimerEvent.TIMER, update_monsters);
 			this.monstertimer.start();
 			
-			p1 = new SquarePlayer(40,40);
+			p1 = new SquarePlayer(40,75);
 			add(p1);
 			
 			FlxG.camera.zoom = 2;

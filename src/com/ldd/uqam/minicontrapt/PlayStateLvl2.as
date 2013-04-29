@@ -101,7 +101,7 @@ package com.ldd.uqam.minicontrapt
 			this.deathLine = RedSquareOfDeath.create_death_line(2400, 448);
 			add(this.deathLine);
 			
-			p1 = new SquarePlayer(50,50);
+			p1 = new SquarePlayer(50,185);
 			add(p1);
 			
 			FlxG.camera.zoom = 2;
