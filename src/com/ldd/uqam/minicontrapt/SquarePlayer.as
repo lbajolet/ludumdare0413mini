@@ -8,6 +8,9 @@ package com.ldd.uqam.minicontrapt
 	 */
 	public class SquarePlayer extends FlxSprite
 	{
+		[Embed(source = "../../../../../Assets/Sounds/jump.mp3")] private var jmpSound: Class;
+		[Embed(source = "../../../../../Assets/Sounds/Death.mp3")] private var deathSound: Class;
+		
 		private var positionY :int;
 		private var enSaut : Boolean;
 		private var temp :int;
@@ -64,6 +67,7 @@ package com.ldd.uqam.minicontrapt
 					this.velocity.y = 100;
 					this.maxVelocity.y = -180;
 					enSaut = true;
+					FlxG.play(jmpSound);
 				}
 			}
 			
@@ -73,6 +77,7 @@ package com.ldd.uqam.minicontrapt
 					this.acceleration.y = 400;
 					this.maxVelocity.y = -180;
 					enSaut = true;
+					FlxG.play(jmpSound);
 				}
 			}
 			
@@ -85,6 +90,7 @@ package com.ldd.uqam.minicontrapt
 		public function respawn(): void {
 			this.x = this.x_spawn;
 			this.y = this.y_spawn;
+			FlxG.play(deathSound);
 		}
 	}
 }
