@@ -103,7 +103,8 @@ package com.ldd.uqam.minicontrapt
 			p1 = new SquarePlayer(40,40);
 			add(p1);
 			
-			FlxG.camera.follow(p1, 1);
+			FlxG.camera.zoom = 2;
+			FlxG.camera.follow(p1, 2);
 		}
 		
 		private function update_monsters(e:TimerEvent):void {

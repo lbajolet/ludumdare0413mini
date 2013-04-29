@@ -37,7 +37,6 @@ package com.ldd.uqam.minicontrapt
 		[Embed(source = '../../../../../Assets/button_down.png')] private var ImgBtnDown:Class;
 		[Embed(source = '../../../../../Assets/button_up.png')] private var ImgBtnUp:Class;
 		[Embed(source = '../../../../../Assets/Door.png')] private var ImgDoor:Class;
-		[Embed(source = "../../../../../Assets/platformer-lvl-1.jpg")] public static var LevelSprite:Class;
 		[Embed(source = "../../../../../Assets/Fond1.png")] public static var LevelSprite:Class;
 		[Embed(source = "../../../../../Assets/Press_button.png")] public static var Help1:Class;
 		[Embed(source = "../../../../../Assets/DoorH.png")] public static var Help2:Class;
@@ -149,10 +148,8 @@ package com.ldd.uqam.minicontrapt
 			p1 = new SquarePlayer(20, 20);
 			add(p1);
 			
-			FlxG.camera.setBounds(0, 0, _map.width, _map.height, true);
-			FlxG.camera.follow(p1, FlxCamera.STYLE_PLATFORMER);
-			
-		
+			FlxG.camera.zoom = 1.5;
+			FlxG.camera.follow(p1, 2);
 		}
 		
 		override public function update():void
