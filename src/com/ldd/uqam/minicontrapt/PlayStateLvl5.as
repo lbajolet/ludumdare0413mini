@@ -28,7 +28,7 @@ package com.ldd.uqam.minicontrapt
 		[Embed(source = '../../../../../Assets/button_down.png')] private var ImgBtnDown:Class;
 		[Embed(source = '../../../../../Assets/button_up.png')] private var ImgBtnUp:Class;
 		[Embed(source = '../../../../../Assets/Door.png')] private var ImgDoor:Class;
-		[Embed(source="../../../../../Assets/platformer-lvl-1.jpg")] public static var LevelSprite:Class;
+		[Embed(source="../../../../../Assets/Fond5.png")] public static var LevelSprite:Class;
 		private var _map:FlxTilemapExt;
 		public static var lyrStage:FlxGroup;
 		

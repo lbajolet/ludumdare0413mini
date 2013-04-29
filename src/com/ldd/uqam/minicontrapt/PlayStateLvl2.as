@@ -5,8 +5,6 @@ package com.ldd.uqam.minicontrapt
 	public class PlayStateLvl2 extends FlxState
 	{
 		public var p1:SquarePlayer;
-		//public var p1:CirclePlayer;
-		public var p2:SecondPlayer;
 		public var ascenseur:FlxSprite;
 		public var dropSol1:FlxSprite;
 		public var dropSol2:FlxSprite;
@@ -27,7 +25,7 @@ package com.ldd.uqam.minicontrapt
 		[Embed(source = '../../../../../Assets/button_down.png')] private var ImgBtnDown:Class;
 		[Embed(source = '../../../../../Assets/button_up.png')] private var ImgBtnUp:Class;
 		[Embed(source = '../../../../../Assets/Door.png')] private var ImgDoor:Class;
-		[Embed(source="../../../../../Assets/platformer-lvl-1.jpg")] public static var LevelSprite:Class;
+		[Embed(source="../../../../../Assets/Fond2.png")] public static var LevelSprite:Class;
 		private var _map:FlxTilemapExt;
 		public static var lyrStage:FlxGroup;
 		
@@ -50,20 +48,20 @@ package com.ldd.uqam.minicontrapt
 			this.add(lyrStage);
 						
 			ascenseur = new FlxSprite(255, 160);
-			ascenseur.makeGraphic(16, 4, 0xffff8762);
+			ascenseur.makeGraphic(16, 4, 0xf0000000);
 			ascenseur.maxVelocity.y = 0;
 			ascenseur.acceleration.y = 0;
 			ascenseur.immovable = true;
 			this.add(ascenseur);
 			
 			dropSol1 = new FlxSprite(320, 220);
-			dropSol1.makeGraphic(20, 4, 0xffff8762);
+			dropSol1.makeGraphic(20, 4, 0xf0000000);
 			dropSol1.maxVelocity.y = 0;
 			dropSol1.acceleration.y = 0;
 			add(dropSol1);
 			
 			dropSol2 = new FlxSprite(360, 190);
-			dropSol2.makeGraphic(20, 4, 0xffff8762);
+			dropSol2.makeGraphic(20, 4, 0xf0000000);
 			dropSol2.maxVelocity.y = 0;
 			dropSol2.acceleration.y = 0;
 			add(dropSol2);
@@ -80,13 +78,13 @@ package com.ldd.uqam.minicontrapt
 			interrupteurOn.immovable = true;
 			
 			addPlatform1 = new FlxSprite(545, 160);
-			addPlatform1.makeGraphic(20, 4, 0xffff8762);
+			addPlatform1.makeGraphic(20, 4, 0xf0000000);
 			addPlatform1.maxVelocity.y = 0;
 			addPlatform1.acceleration.y = 0;
 			addPlatform1.immovable = true;
 			
 			addPlatform2 = new FlxSprite(605, 160);
-			addPlatform2.makeGraphic(20, 4, 0xffff8762);
+			addPlatform2.makeGraphic(20, 4, 0xf0000000);
 			addPlatform2.maxVelocity.y = 0;
 			addPlatform2.acceleration.y = 0;
 			addPlatform2.immovable = true;
@@ -104,13 +102,10 @@ package com.ldd.uqam.minicontrapt
 			add(this.deathLine);
 			
 			p1 = new SquarePlayer(50,50);
-			//p1 = new CirclePlayer(50, 50);
 			add(p1);
 			
-			p2 = new SecondPlayer(255,50);
-			add(p2);
-			
-			FlxG.camera.follow(p1, 1);
+			FlxG.camera.zoom = 2;
+			FlxG.camera.follow(p1, 2);
 		}
 		
 		override public function update():void
@@ -125,9 +120,6 @@ package com.ldd.uqam.minicontrapt
 			var activerDrp1:Boolean;
 			var activerDrp2:Boolean;
 			var finNiveau:Boolean;
-			
-			var activerDrp1P2:Boolean;
-			var activerDrp2P2:Boolean;;
 			
 			FlxG.collide(p1, _map);
 			FlxG.collide(p1, addPlatform1);
@@ -152,21 +144,21 @@ package com.ldd.uqam.minicontrapt
 				ascenseur.acceleration.y = 50;
 				ascenseur.maxVelocity.y = 100;
 			}
-			if (activerDrp1 == true || activerDrp1P2 == true) {
+			if (activerDrp1 == true) {
 				dropSol1.maxVelocity.y = 80;
 				dropSol1.acceleration.y = 80;
 			}
-			if (dropSol1.y > 600)
+			if (dropSol1.y > 400)
 			{
 				dropSol1.y = 220;
 				dropSol1.maxVelocity.y = 0;
 				dropSol1.velocity.y = 0;
 			}
-			if (activerDrp2 == true || activerDrp2P2 == true) {
+			if (activerDrp2 == true) {
 				dropSol2.maxVelocity.y = 80;
 				dropSol2.acceleration.y = 80;
 			}
-			if (dropSol2.y > 600)
+			if (dropSol2.y > 400)
 			{
 				dropSol2.y = 190;
 				dropSol2.maxVelocity.y = 0;
@@ -180,9 +172,6 @@ package com.ldd.uqam.minicontrapt
 				
 				add(addPlatform1);
 				add(addPlatform2);
-				
-				p2.x = 528;
-				p2.y = 80
 			}
 			super.update();
 		}

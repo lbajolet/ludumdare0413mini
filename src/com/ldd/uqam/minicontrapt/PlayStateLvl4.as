@@ -32,7 +32,7 @@ package com.ldd.uqam.minicontrapt
 		[Embed(source = '../../../../../Assets/button_up.png')] private var ImgBtnUp:Class;
 		[Embed(source = '../../../../../Assets/Door.png')] private var ImgDoor:Class;
 		[Embed(source = '../../../../../Assets/monster.png')] private var ImgMonster:Class;
-		[Embed(source="../../../../../Assets/platformer-lvl-1.jpg")] public static var LevelSprite:Class;
+		[Embed(source="../../../../../Assets/Fond4.png")] public static var LevelSprite:Class;
 		private var _map:FlxTilemapExt;
 		public static var lyrStage:FlxGroup;
 		

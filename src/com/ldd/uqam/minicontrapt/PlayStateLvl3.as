@@ -33,7 +33,7 @@ package com.ldd.uqam.minicontrapt
 		[Embed(source = '../../../../../Assets/button_down.png')] private var ImgBtnDown:Class;
 		[Embed(source = '../../../../../Assets/button_up.png')] private var ImgBtnUp:Class;
 		[Embed(source = '../../../../../Assets/Door.png')] private var ImgDoor:Class;
-		[Embed(source="../../../../../Assets/platformer-lvl-1.jpg")] public static var LevelSprite:Class;
+		[Embed(source="../../../../../Assets/Fond3.png")] public static var LevelSprite:Class;
 		private var _map:FlxTilemapExt;
 		public static var lyrStage:FlxGroup;
 		
@@ -64,12 +64,12 @@ package com.ldd.uqam.minicontrapt
 			door.immovable = true;
 			add(door);
 			
-			platforme1 = new FlxSprite(745, 375);
+			platforme1 = new FlxSprite(745, 390);
 			platforme1.makeGraphic(15, 5, 0xf0000000);
 			platforme1.immovable = true;
 			this.add(platforme1);
 			
-			platforme2 = new FlxSprite(850, 375);
+			platforme2 = new FlxSprite(850, 390);
 			platforme2.makeGraphic(15, 5, 0xf0000000);
 			platforme2.immovable = true;
 			this.add(platforme2);
