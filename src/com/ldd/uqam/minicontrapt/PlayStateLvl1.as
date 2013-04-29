@@ -30,6 +30,7 @@ package com.ldd.uqam.minicontrapt
 		public var help2:FlxSprite;
 		public var help3:FlxSprite;
 		public var help4:FlxSprite;
+		public var help5:FlxSprite;
 		
 		[Embed(source = '../../../../../Assets/Level1.png')] private var ImgTiles:Class;
 		[Embed(source = '../../../../../Assets/Level1.txt', mimeType = "application/octet-stream")] private var DataMap:Class;
@@ -41,7 +42,8 @@ package com.ldd.uqam.minicontrapt
 		[Embed(source = "../../../../../Assets/Press_button.png")] public static var Help1:Class;
 		[Embed(source = "../../../../../Assets/DoorH.png")] public static var Help2:Class;
 		[Embed(source = "../../../../../Assets/Jumppppp.png")] public static var Help3:Class;
-		[Embed(source="../../../../../Assets/platform.png")] public static var Help4:Class;
+		[Embed(source = "../../../../../Assets/platform.png")] public static var Help4:Class;
+		[Embed(source="../../../../../Assets/wall_jumping.png")] public static var Help5:Class;
 		private var _map:FlxTilemapExt;
 		
 		public static var lyrStage:FlxGroup;
@@ -52,7 +54,7 @@ package com.ldd.uqam.minicontrapt
 			var bg:FlxSprite = new FlxSprite(16, 16, LevelSprite);
             add(bg);
 			
-			help1 = new FlxSprite(120, -100, Help1);
+			help1 = new FlxSprite(120, 0, Help1);
 			help1.scale.x = 0.3;
 			help1.scale.y = 0.3;
 			add(help1);
@@ -62,15 +64,20 @@ package com.ldd.uqam.minicontrapt
 			help2.scale.y = 0.3;
 			add(help2);
 			
-			help3 = new FlxSprite(-100, -100, Help3);
+			help3 = new FlxSprite(-100, 0, Help3);
 			help3.scale.x = 0.3;
 			help3.scale.y = 0.3;
 			add(help3);
 			
-			help3 = new FlxSprite(470, -100, Help4);
-			help3.scale.x = 0.3;
-			help3.scale.y = 0.3;
-			add(help3);
+			help4 = new FlxSprite(470, -100, Help4);
+			help4.scale.x = 0.3;
+			help4.scale.y = 0.3;
+			add(help4);
+			
+			help5 = new FlxSprite(300, -50, Help5);
+			help5.scale.x = 0.3;
+			help5.scale.y = 0.3;
+			add(help5);
 			
 			_map = new FlxTilemapExt;
 			_map.loadMap(new DataMap, ImgTiles,16); 
