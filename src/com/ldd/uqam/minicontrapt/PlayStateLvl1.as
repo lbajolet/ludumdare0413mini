@@ -42,6 +42,8 @@ package com.ldd.uqam.minicontrapt
 
 		override public function create():void
 		{
+			FlxG.playMusic(Main.bgm);
+			
 			FlxG.worldBounds.width = 3000;
 			var bg:FlxSprite = new FlxSprite(-200, -20, LevelSprite);
             add(bg);

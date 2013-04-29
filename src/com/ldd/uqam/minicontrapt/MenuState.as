@@ -28,7 +28,9 @@ package com.ldd.uqam.minicontrapt
 		}
 		
 		override public function create(): void
-		{			
+		{
+			FlxG.stream("../../../../../Assets/Sounds/Goto80_and_the_Uwe_Schenk_Band_-_01_-_Ponky_Fonky_Ferret.mp3", 1, true);
+			
 			FlxG.bgColor = 0xff000000;
 			
 			var hPos:int = (FlxG.width - boutonSize) / 2;
