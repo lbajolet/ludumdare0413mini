@@ -161,7 +161,11 @@ package com.ldd.uqam.minicontrapt
 			FlxG.collide(p1, block2);
 			FlxG.collide(p1, block3);
 			var killByMonster:Boolean = FlxG.collide(p1, monster);
-			finNiveau = FlxG.collide(p1, door);
+			
+			if (FlxG.collide(p1, door)) {
+				//FlxG.switchState(new PlayStateLvl5);
+				//End of game
+			}
 			
 			if (btnActivate == false) {
 				var activerInter:Boolean = FlxG.collide(p1, interrupteur);
@@ -294,6 +298,8 @@ package com.ldd.uqam.minicontrapt
 			
 			if (killByMonster == true) {
 				p1.respawn();
+				monster.x = -320;
+				monster.y = 335;
 			}
 			super.update();
 		}

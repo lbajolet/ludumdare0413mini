@@ -35,7 +35,7 @@ package com.ldd.uqam.minicontrapt
 		[Embed(source = '../../../../../Assets/button_up.png')] private var ImgBtnUp:Class;
 		[Embed(source = '../../../../../Assets/Door.png')] private var ImgDoor:Class;
 		[Embed(source = "../../../../../Assets/platformer-lvl-1.jpg")] public static var LevelSprite:Class;
-		[Embed(source="../../../../../Assets/Press_button.png")] public static var Help1:Class;
+		//[Embed(source = "../../../../../Assets/Press_button.png")] public static var Help1:Class;
 		private var _map:FlxTilemapExt;
 		
 		public static var lyrStage:FlxGroup;
@@ -47,8 +47,8 @@ package com.ldd.uqam.minicontrapt
             add(bg);
 			FlxG.bgColor = 0xffffffff;
 
-			help1 = new FlxSprite(370, 300, Help1);
-			add(help1);
+			//help1 = new FlxSprite(370, 300, Help1);
+			//add(help1);
 			
 			_map = new FlxTilemapExt;
 			_map.loadMap(new DataMap, ImgTiles,16); 

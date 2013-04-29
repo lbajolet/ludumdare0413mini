@@ -27,6 +27,8 @@ package com.ldd.uqam.minicontrapt
 		public var platforme2:FlxSprite;
 		public var monstertimer: Timer;
 		
+		private var deathLine: FlxGroup;
+		
 		[Embed(source = '../../../../../Assets/Level3.png')] private var ImgTiles:Class;
 		[Embed(source = '../../../../../Assets/Level3.txt', mimeType = "application/octet-stream")] private var DataMap:Class;
 		[Embed(source = '../../../../../Assets/BlackFlag.png')] private var ImgFlag:Class;
@@ -63,6 +65,9 @@ package com.ldd.uqam.minicontrapt
 			door.acceleration.y = 0;
 			door.immovable = true;
 			add(door);
+			
+			this.deathLine = RedSquareOfDeath.create_death_line(1030, 463);
+			add(this.deathLine);
 			
 			platforme1 = new FlxSprite(745, 375);
 			platforme1.makeGraphic(15, 5, 0xf0000000);
@@ -115,6 +120,8 @@ package com.ldd.uqam.minicontrapt
 			monster6.acceleration.x = 0;
 			monster6.immovable = true;
 			this.add(monster6);
+			
+			
 			
 			this.monstertimer = new Timer(25);
 			this.monstertimer.addEventListener(TimerEvent.TIMER, update_monsters);
@@ -199,7 +206,11 @@ package com.ldd.uqam.minicontrapt
 			FlxG.collide(p1, _map);
 			FlxG.collide(p1, platforme1);
 			FlxG.collide(p1, platforme2);
-			var finLvl : Boolean = FlxG.collide(p1, door);
+			
+			if (FlxG.collide(p1, deathLine)) {
+				p1.respawn();
+			}
+			
 			var mort1 :Boolean = FlxG.collide(p1, monster1);
 			var mort2 :Boolean = FlxG.collide(p1, monster2);
 			var mort3 :Boolean = FlxG.collide(p1, monster3);
@@ -212,13 +223,9 @@ package com.ldd.uqam.minicontrapt
 			}
 			
 			if (mort1 == true || mort2 == true || mort3 == true || mort4 == true || mort5 == true || mort6 == true) {
-				p1.x = 50;
-				p1.y = 50;
+				p1.respawn();
 			}
 			
-			if (finLvl == true) {
-				//FlxG.switchState(PlayStateLvl4);
-			}
 			super.update();
 		}
 	}
