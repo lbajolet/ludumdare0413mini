@@ -19,7 +19,9 @@ package com.ldd.uqam.minicontrapt
 			var rsodGroup:FlxGroup = new FlxGroup();
 			var total = line_length / 16;
 			for (var i:int = 0; i < total; i++ ) {
-				rsodGroup.add(new RedSquareOfDeath(i*16, line_height));
+				var rsod:RedSquareOfDeath = new RedSquareOfDeath(i * 16, line_height);
+				rsod.immovable = true;
+				rsodGroup.add(rsod);
 			}
 			return rsodGroup;
 		}
