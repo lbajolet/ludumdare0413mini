@@ -36,7 +36,6 @@ package com.ldd.uqam.minicontrapt
 		[Embed(source="../../../../../Assets/platformer-lvl-1.jpg")] public static var LevelSprite:Class;
 		private var _map:FlxTilemapExt;
 		public static var lyrStage:FlxGroup;
-		private var deathLine: FlxGroup;
 		
 		override public function create():void
 		{	
@@ -55,9 +54,6 @@ package com.ldd.uqam.minicontrapt
             lyrStage.add(_map);
 			_map.immovable = true;
 			this.add(lyrStage);
-			
-			this.deathLine = RedSquareOfDeath.create_death_line(2500, 448);
-			add(this.deathLine);
 			
 			staticSprite = new FlxSprite(30, 385, ImgFlag);
 			add(staticSprite);
@@ -216,21 +212,9 @@ package com.ldd.uqam.minicontrapt
 				p1.y = 50;
 			}
 			
-			if (FlxG.collide(p1, this.deathLine)) {
-				this.p1.x = 50;
-				this.p1.y = 50;
-			}
-			FlxG.collide(this.deathLine, _map);
-			
-			if (FlxG.keys.K) {
-				this.p1.x = 50;
-				this.p1.y = 50;
-			}
-			
 			if (finLvl == true) {
 				//FlxG.switchState(PlayStateLvl4);
 			}
-			
 			super.update();
 		}
 	}
