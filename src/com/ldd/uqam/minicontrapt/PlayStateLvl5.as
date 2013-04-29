@@ -16,15 +16,10 @@ package com.ldd.uqam.minicontrapt
 		private var monster2_dir: Boolean;
 		public var monster3: FlxSprite;
 		private var monster3_dir: Boolean;
-		public var monster4: FlxSprite;
-		private var monster4_dir: Boolean;
-		public var monster5: FlxSprite;
-		private var monster5_dir: Boolean;
-		public var monster6: FlxSprite;
-		private var monster6_dir: Boolean;
-		
-		public var platforme1:FlxSprite;
-		public var platforme2:FlxSprite;
+		public var interrupteur:FlxSprite;
+		public var interrupteurOn:FlxSprite;
+		public var btnActivate:Boolean = false;
+		public var wall:FlxSprite;
 		public var monstertimer: Timer;
 		
 		[Embed(source = '../../../../../Assets/Level5.png')] private var ImgTiles:Class;
@@ -55,7 +50,7 @@ package com.ldd.uqam.minicontrapt
 			_map.immovable = true;
 			this.add(lyrStage);
 			
-			staticSprite = new FlxSprite(20, 450, ImgFlag);
+			staticSprite = new FlxSprite(40, 98, ImgFlag);
 			add(staticSprite);
 			
 			door = new FlxSprite(525, 45, ImgDoor);
@@ -63,6 +58,22 @@ package com.ldd.uqam.minicontrapt
 			door.acceleration.y = 0;
 			door.immovable = true;
 			add(door);
+			
+			wall = new FlxSprite(400, 20);
+			wall.makeGraphic(10, 92, 0xf0000000);
+			wall.immovable = true;
+			add(wall);
+			
+			interrupteur = new FlxSprite(20, 458, ImgBtnUp);
+			interrupteur.maxVelocity.y = 0;
+			interrupteur.acceleration.y = 0;
+			interrupteur.immovable = true;
+			add(interrupteur);
+			
+			interrupteurOn = new FlxSprite(20, 462, ImgBtnDown);
+			interrupteurOn.maxVelocity.y = 0;
+			interrupteurOn.acceleration.y = 0;
+			interrupteurOn.immovable = true;
 			
 			monster1 = new FlxSprite(340, 130);
 			monster1.makeGraphic(16, 16, 0xfff11111);
@@ -89,7 +100,7 @@ package com.ldd.uqam.minicontrapt
 			this.monstertimer.addEventListener(TimerEvent.TIMER, update_monsters);
 			this.monstertimer.start();
 			
-			p1 = new SquarePlayer(50,50);
+			p1 = new SquarePlayer(40,40);
 			add(p1);
 			
 			FlxG.camera.follow(p1, 1);
@@ -133,18 +144,38 @@ package com.ldd.uqam.minicontrapt
 		override public function update():void
 		{
 			FlxG.collide(p1, _map);
+			
 			var finLvl : Boolean = FlxG.collide(p1, door);
 			var mort1 :Boolean = FlxG.collide(p1, monster1);
 			var mort2 :Boolean = FlxG.collide(p1, monster2);
 			var mort3 :Boolean = FlxG.collide(p1, monster3);
 			
 			if (mort1 == true || mort2 == true || mort3 == true) {
-				p1.x = 50;
-				p1.y = 50;
+				p1.x = 40;
+				p1.y = 40;
+				add(wall);
+				add(interrupteur)
+				remove(interrupteurOn);
+				btnActivate = false;
+			}
+			
+			if (btnActivate == false) {
+				FlxG.collide(p1, wall);
+				var activerInter:Boolean = FlxG.collide(p1, interrupteur);
+			}else {
+				FlxG.collide(p1, interrupteurOn);
+			}
+			
+			if (activerInter == true)
+			{
+				btnActivate = true;
+				remove(interrupteur);
+				remove(wall);
+				add(interrupteurOn);
 			}
 			
 			if (finLvl == true) {
-				//FlxG.switchState(PlayStateLvl4);
+				FlxG.switchState(new PlayStateLvl4);
 			}
 			super.update();
 		}
