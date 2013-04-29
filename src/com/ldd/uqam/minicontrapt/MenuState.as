@@ -1,4 +1,4 @@
-package domi
+package com.ldd.uqam.minicontrapt
 {
 	
 	import org.flixel.*;
@@ -9,12 +9,12 @@ package domi
 		private static const boutonSpacing:int = 30;
 		private static const boutonSize:int = 76;
 		
-		[Embed(source = '../Assets/menu/triangle.png')]public var Triangle:Class;
-		[Embed(source = '../Assets/menu/rond.png')]public var Rond:Class;
-		[Embed(source = '../Assets/menu/carre.png')]public var Carre:Class;
-		[Embed(source = '../Assets/menu/game.png')]public var Game:Class;
-		[Embed(source = '../Assets/menu/about.png')]public var About:Class;
-		[Embed(source = '../Assets/menu/credits.png')]public var Credits:Class;
+		[Embed(source = '../../../../../Assets/menu/triangle.png')]public var Triangle:Class;
+		[Embed(source = '../../../../../Assets/menu/rond.png')]public var Rond:Class;
+		[Embed(source = '../../../../../Assets/menu/carre.png')]public var Carre:Class;
+		[Embed(source = '../../../../../Assets/menu/game.png')]public var Game:Class;
+		[Embed(source = '../../../../../Assets/menu/about.png')]public var About:Class;
+		[Embed(source = '../../../../../Assets/menu/credits.png')]public var Credits:Class;
 		
 		private var imgTriangle:FlxSprite;
 		private var imgRond:FlxSprite;
@@ -78,7 +78,7 @@ package domi
 		{
 			if (imgTriangle.overlapsPoint(point, true))
 			{
-				FlxG.switchState(new PlayState);
+				FlxG.switchState(new PlayStateLvl1);
 			}
 			else if (imgRond.overlapsPoint(point, true))
 			{
