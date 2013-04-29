@@ -12,6 +12,9 @@ package com.ldd.uqam.minicontrapt
 		private var enSaut : Boolean;
 		private var temp :int;
 		
+		private var x_spawn:int;
+		private var y_spawn:int;
+		
 		private var wall_touched_last_time: uint;
 		
 		private var timerToWalljump:FlxTimer;
@@ -26,6 +29,8 @@ package com.ldd.uqam.minicontrapt
 			enSaut = true;
 			timerToWalljump = new FlxTimer();
 			timerToWalljump.start(1, 1);
+			this.x_spawn = x;
+			this.y_spawn = y;
 		}
 		
 		override public function update():void
@@ -75,6 +80,11 @@ package com.ldd.uqam.minicontrapt
 				this.maxVelocity.y = 400;
 			}
 			super.update();
+		}
+		
+		public function respawn(): void {
+			this.x = this.x_spawn;
+			this.y = this.y_spawn;
 		}
 	}
 }

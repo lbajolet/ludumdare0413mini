@@ -111,7 +111,7 @@ package com.ldd.uqam.minicontrapt
 		override public function update():void
 		{
 			if (FlxG.collide(p1, deathLine)) {
-				p1.kill();
+				p1.respawn();
 			}
 			
 			FlxG.collide(p1, _map);

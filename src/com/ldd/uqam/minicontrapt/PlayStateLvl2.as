@@ -5,8 +5,6 @@ package com.ldd.uqam.minicontrapt
 	public class PlayStateLvl2 extends FlxState
 	{
 		public var p1:SquarePlayer;
-		//public var p1:CirclePlayer;
-		public var p2:SecondPlayer;
 		public var ascenseur:FlxSprite;
 		public var dropSol1:FlxSprite;
 		public var dropSol2:FlxSprite;
@@ -104,20 +102,15 @@ package com.ldd.uqam.minicontrapt
 			add(this.deathLine);
 			
 			p1 = new SquarePlayer(50,50);
-			//p1 = new CirclePlayer(50, 50);
 			add(p1);
-			
-			p2 = new SecondPlayer(255,50);
-			add(p2);
-			
+
 			FlxG.camera.follow(p1, 1);
 		}
 		
 		override public function update():void
 		{
 			if (FlxG.collide(p1, this.deathLine)) {
-				this.p1.x = 50;
-				this.p1.y = 50;
+				p1.respawn();
 			}
 			FlxG.collide(this.deathLine, _map);
 			
@@ -180,9 +173,6 @@ package com.ldd.uqam.minicontrapt
 				
 				add(addPlatform1);
 				add(addPlatform2);
-				
-				p2.x = 528;
-				p2.y = 80
 			}
 			super.update();
 		}
