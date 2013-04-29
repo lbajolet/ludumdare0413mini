@@ -221,7 +221,7 @@ package com.ldd.uqam.minicontrapt
 			var mort6 :Boolean = FlxG.collide(p1, monster6);
 			
 			if (FlxG.collide(p1, door)) {
-				FlxG.switchState(new PlayStateLvl4);
+				FlxG.switchState(new PlayStateLvl5);
 			}
 			
 			if (mort1 == true || mort2 == true || mort3 == true || mort4 == true || mort5 == true || mort6 == true) {

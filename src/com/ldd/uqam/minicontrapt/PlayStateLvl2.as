@@ -122,8 +122,6 @@ package com.ldd.uqam.minicontrapt
 			var finNiveau:Boolean;
 			
 			FlxG.collide(p1, _map);
-			FlxG.collide(p1, addPlatform1);
-			FlxG.collide(p1, addPlatform2);
 			
 			activerAsc = FlxG.collide(p1, ascenseur);
 			activerDrp1 = FlxG.collide(p1, dropSol1);
@@ -136,6 +134,8 @@ package com.ldd.uqam.minicontrapt
 			if (btnActivate == false) {
 				var activerInter:Boolean = FlxG.collide(p1, interrupteur);
 			}else {
+				FlxG.collide(p1, addPlatform1);
+				FlxG.collide(p1, addPlatform2);
 				FlxG.collide(p1, interrupteurOn);
 			}
 			
