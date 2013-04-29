@@ -293,8 +293,7 @@ package com.ldd.uqam.minicontrapt
 			}
 			
 			if (killByMonster == true) {
-				p1.x = 40;
-				p1.y = 40;
+				p1.respawn();
 			}
 			super.update();
 		}

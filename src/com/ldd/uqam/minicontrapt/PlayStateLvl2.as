@@ -120,7 +120,7 @@ package com.ldd.uqam.minicontrapt
 			var finNiveau:Boolean;
 			
 			var activerDrp1P2:Boolean;
-			var activerDrp2P2:Boolean;;
+			var activerDrp2P2:Boolean;
 			
 			FlxG.collide(p1, _map);
 			FlxG.collide(p1, addPlatform1);
