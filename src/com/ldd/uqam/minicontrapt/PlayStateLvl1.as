@@ -27,6 +27,9 @@ package com.ldd.uqam.minicontrapt
 		public var descG:FlxSprite;
 		public var btnActivate:Boolean = false;
 		public var help1:FlxSprite;
+		public var help2:FlxSprite;
+		public var help3:FlxSprite;
+		public var help4:FlxSprite;
 		
 		[Embed(source = '../../../../../Assets/Level1.png')] private var ImgTiles:Class;
 		[Embed(source = '../../../../../Assets/Level1.txt', mimeType = "application/octet-stream")] private var DataMap:Class;
@@ -35,7 +38,11 @@ package com.ldd.uqam.minicontrapt
 		[Embed(source = '../../../../../Assets/button_up.png')] private var ImgBtnUp:Class;
 		[Embed(source = '../../../../../Assets/Door.png')] private var ImgDoor:Class;
 		[Embed(source = "../../../../../Assets/platformer-lvl-1.jpg")] public static var LevelSprite:Class;
-		//[Embed(source = "../../../../../Assets/Press_button.png")] public static var Help1:Class;
+		[Embed(source = "../../../../../Assets/Fond1.png")] public static var LevelSprite:Class;
+		[Embed(source = "../../../../../Assets/Press_button.png")] public static var Help1:Class;
+		[Embed(source = "../../../../../Assets/DoorH.png")] public static var Help2:Class;
+		[Embed(source = "../../../../../Assets/Jumppppp.png")] public static var Help3:Class;
+		[Embed(source="../../../../../Assets/platform.png")] public static var Help4:Class;
 		private var _map:FlxTilemapExt;
 		
 		public static var lyrStage:FlxGroup;
@@ -45,12 +52,29 @@ package com.ldd.uqam.minicontrapt
 			FlxG.playMusic(Main.bgm);
 			
 			FlxG.worldBounds.width = 3000;
-			var bg:FlxSprite = new FlxSprite(-200, -20, LevelSprite);
+			var bg:FlxSprite = new FlxSprite(16, 16, LevelSprite);
             add(bg);
 			FlxG.bgColor = 0xffffffff;
-
-			//help1 = new FlxSprite(370, 300, Help1);
-			//add(help1);
+			
+			help1 = new FlxSprite(120, -100, Help1);
+			help1.scale.x = 0.3;
+			help1.scale.y = 0.3;
+			add(help1);
+			
+			help2 = new FlxSprite(650, -100, Help2);
+			help2.scale.x = 0.3;
+			help2.scale.y = 0.3;
+			add(help2);
+			
+			help3 = new FlxSprite(-100, -100, Help3);
+			help3.scale.x = 0.3;
+			help3.scale.y = 0.3;
+			add(help3);
+			
+			help3 = new FlxSprite(470, -100, Help4);
+			help3.scale.x = 0.3;
+			help3.scale.y = 0.3;
+			add(help3);
 			
 			_map = new FlxTilemapExt;
 			_map.loadMap(new DataMap, ImgTiles,16); 
@@ -66,8 +90,6 @@ package com.ldd.uqam.minicontrapt
             lyrStage.add(_map);
 			_map.immovable = true;
 			this.add(lyrStage);
-			
-
 			
 			interrupteur = new FlxSprite(400, 392, ImgBtnUp);
 			interrupteur.maxVelocity.y = 0;
