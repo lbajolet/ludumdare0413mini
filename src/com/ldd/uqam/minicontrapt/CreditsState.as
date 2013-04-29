@@ -1,4 +1,4 @@
-package domi
+package com.ldd.uqam.minicontrapt
 {
 	
 	import org.flixel.*;

@@ -1,12 +1,12 @@
-package domi
+package com.ldd.uqam.minicontrapt
 {
 	import org.flixel.*;
 	
 	public class BasicState extends FlxState
 	{
-		[Embed(source = '../Assets/menu/about-state.png')]protected var ImgAboutState:Class;
-		[Embed(source = '../Assets/menu/credits-state.png')]protected var ImgCreditsState:Class;
-		[Embed(source = '../Assets/menu/back.png')]protected var ImgBack:Class;
+		[Embed(source = '../../../../../Assets/menu/about-state.png')]protected var ImgAboutState:Class;
+		[Embed(source = '../../../../../Assets/menu/credits-state.png')]protected var ImgCreditsState:Class;
+		[Embed(source = '../../../../../Assets/menu/back.png')]protected var ImgBack:Class;
 		
 		protected var imgBack:FlxSprite;
 		protected var imgState:FlxSprite;
