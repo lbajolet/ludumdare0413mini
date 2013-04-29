@@ -18,8 +18,8 @@ package domi
 			FlxG.bgColor = 0xffaaaaaa;
 			add(map.loadMap(new levelMap, levelTiles, 16, 16));
 			//add(player = new Player(10, 10));
-			//add(triangle = new Triangle(200, 10));
-			add(circle = new Circle(200, 10));
+			add(triangle = new Triangle(200, 10));
+			//add(circle = new Circle(200, 10));
 			
 			super.create();
 		}
@@ -28,8 +28,8 @@ package domi
 		{
 			super.update();
 			//FlxG.collide(player, map);
-			//FlxG.collide(triangle, map);
-			FlxG.collide(circle, map);
+			FlxG.collide(triangle, map);
+			//FlxG.collide(circle, map);
 		}
 	}
 }
