@@ -67,6 +67,8 @@ package com.ldd.uqam.minicontrapt
 			add(txtAbout);
 			add(txtCredits);
 			
+			FlxG.mouse.show();
+			
 			txtGame.visible = false;
 			txtAbout.visible = false;
 			txtCredits.visible = false;
@@ -93,6 +95,7 @@ package com.ldd.uqam.minicontrapt
 		{
 			if (imgTriangle.overlapsPoint(point, true))
 			{
+				FlxG.mouse.hide();
 				FlxG.switchState(new PlayStateLvl1);
 			}
 			else if (imgRond.overlapsPoint(point, true))
