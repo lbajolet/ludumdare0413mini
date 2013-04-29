@@ -1,7 +1,5 @@
 package com.ldd.uqam.minicontrapt
 {
-	import flash.events.TimerEvent;
-	import flash.utils.Timer;
 	import org.flixel.*;
 	import org.flixel.plugin.TimerManager;
 	/**
@@ -17,7 +15,6 @@ package com.ldd.uqam.minicontrapt
 		private var wall_touched_last_time: uint;
 		
 		private var timerToWalljump:FlxTimer;
-		private var timerForOtherKey:Timer;
 		
 		public function SquarePlayer(x:int, y:int) 
 		{
@@ -29,9 +26,6 @@ package com.ldd.uqam.minicontrapt
 			enSaut = true;
 			timerToWalljump = new FlxTimer();
 			timerToWalljump.start(1, 1);
-			timerForOtherKey = new Timer(1000, 1);
-			timerForOtherKey.addEventListener(TimerEvent.TIMER, wall_jump);
-			//timerForOtherKey.start();
 		}
 		
 		override public function update():void

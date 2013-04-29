@@ -130,24 +130,16 @@ package com.ldd.uqam.minicontrapt
 			var activerDrp2P2:Boolean;;
 			
 			FlxG.collide(p1, _map);
-			FlxG.collide(p1, p2);
 			FlxG.collide(p1, addPlatform1);
 			FlxG.collide(p1, addPlatform2);
 			
 			activerAsc = FlxG.collide(p1, ascenseur);
 			activerDrp1 = FlxG.collide(p1, dropSol1);
 			activerDrp2 = FlxG.collide(p1, dropSol2);
-			finNiveau = FlxG.collide(p1, door);
 			
-			FlxG.collide(p2, _map);
-			FlxG.collide(p2, p1);
-			FlxG.collide(p2, ascenseur);
-			FlxG.collide(p2, addPlatform1);
-			FlxG.collide(p2, addPlatform2);
-			
-			activerDrp1P2 = FlxG.collide(p2, dropSol1);
-			activerDrp2P2 = FlxG.collide(p2, dropSol2);
-			finNiveau = FlxG.collide(p2, door);
+			if (FlxG.collide(p1, door)) {
+				FlxG.switchState(new PlayStateLvl3);
+			}
 			
 			if (btnActivate == false) {
 				var activerInter:Boolean = FlxG.collide(p1, interrupteur);
@@ -179,9 +171,6 @@ package com.ldd.uqam.minicontrapt
 				dropSol2.y = 190;
 				dropSol2.maxVelocity.y = 0;
 				dropSol2.velocity.y = 0;
-			}
-			if (finNiveau == true) {
-
 			}
 			if (activerInter)
 			{

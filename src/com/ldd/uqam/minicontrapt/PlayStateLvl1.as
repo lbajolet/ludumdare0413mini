@@ -122,6 +122,10 @@ package com.ldd.uqam.minicontrapt
 				FlxG.collide(p1, platform1);
 			}
 			
+			if (FlxG.collide(p1, this.door)) {
+				FlxG.switchState(new PlayStateLvl2);
+			}
+			
 			if (activerInter == true)
 			{
 				btnActivate = true;

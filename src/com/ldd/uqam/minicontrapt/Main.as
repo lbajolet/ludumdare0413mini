@@ -7,7 +7,7 @@ package com.ldd.uqam.minicontrapt
 	{
 		public function Main()
 		{
-			super(640, 480, PlayStateLevel1, 1);
+			super(640, 480, MenuState, 1);
 			forceDebugger = true;
 		}
 	}
