@@ -38,7 +38,7 @@ package domi
 				angularAcceleration = 0;
 			}
 			
-			angularVelocity = this.velocity.x;
+			angularVelocity = 6*this.velocity.x;
 			
 			super.update();
 		}

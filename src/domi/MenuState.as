@@ -1,12 +1,11 @@
 package domi
 {
-
-	import flash.geom.Point;
 	
 	import org.flixel.*;
 	
 	public class MenuState extends FlxState
 	{
+		
 		private static const boutonSpacing:int = 30;
 		private static const boutonSize:int = 76;
 		
@@ -26,12 +25,11 @@ package domi
 		
 		public function MenuState()
 		{
-			
 		}
 		
 		override public function create(): void
-		{
-			FlxG.mouse.show();
+		{			
+			FlxG.bgColor = 0xff000000;
 			
 			var hPos:int = (FlxG.width - boutonSize) / 2;
 			var vPos2:int = (FlxG.height - boutonSize) / 2;
@@ -84,11 +82,11 @@ package domi
 			}
 			else if (imgRond.overlapsPoint(point, true))
 			{
-				
+				FlxG.switchState(new AboutState);
 			}
 			else if (imgCarre.overlapsPoint(point, true))
 			{
-				
+				FlxG.switchState(new CreditsState);
 			}
 		}
 	}
