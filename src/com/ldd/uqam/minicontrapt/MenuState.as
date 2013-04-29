@@ -15,6 +15,8 @@ package com.ldd.uqam.minicontrapt
 		[Embed(source = '../../../../../Assets/menu/game.png')]public var Game:Class;
 		[Embed(source = '../../../../../Assets/menu/about.png')]public var About:Class;
 		[Embed(source = '../../../../../Assets/menu/credits.png')]public var Credits:Class;
+		[Embed(source = '../../../../../Assets/menu/Minicontrapt logo.png')]public var Title:Class;
+		[Embed(source = '../../../../../Assets/menu/Subtitle.png')]public var Subtitle:Class;
 		
 		private var imgTriangle:FlxSprite;
 		private var imgRond:FlxSprite;
@@ -41,6 +43,17 @@ package com.ldd.uqam.minicontrapt
 			imgTriangle = new FlxSprite(hPos, vPos1, Triangle);
 			imgRond = new FlxSprite(hPos, vPos2, Rond);
 			imgCarre = new FlxSprite(hPos, vPos3, Carre);
+			
+			var title_sprite:FlxSprite = new FlxSprite( -90, -60, Title);
+			title_sprite.scale.x = .7;
+			title_sprite.scale.y = .7;
+			add(title_sprite);
+			
+			
+			var subtitle_sprite:FlxSprite = new FlxSprite(-70, 340, Subtitle);
+			subtitle_sprite.scale.x = 0.7;
+			subtitle_sprite.scale.y = 0.7;
+			add(subtitle_sprite);
 			
 			txtGame = new FlxSprite(0, vPos1, Game);
 			txtAbout = new FlxSprite(0, vPos2, About);
