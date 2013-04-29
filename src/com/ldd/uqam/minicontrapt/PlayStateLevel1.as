@@ -14,7 +14,7 @@ package com.ldd.uqam.minicontrapt
 	public class PlayStateLevel1 extends FlxState
 	{
 		public var button:FlxButton;
-		private var circle_player:TrianglePlayer;
+		private var circle_player:CirclePlayer;
 		[Embed(source = '../../../../../Assets/chameauTroie.png')] private var cratePNG:Class;
 		
 		[Embed(source = '../../../../../Assets/Level1tileSet.png')] private var ImgTiles:Class;
@@ -41,7 +41,7 @@ package com.ldd.uqam.minicontrapt
             lyrStage.add(_map);
 			_map.immovable = true;
 			this.add(lyrStage);
-			circle_player = new TrianglePlayer(0, 0);
+			circle_player = new CirclePlayer(0, 0);
 			//crate = new Dromadaire(50,200, cratePNG);
 			//crate.solid = crate.immovable = true;
 			add(circle_player);
