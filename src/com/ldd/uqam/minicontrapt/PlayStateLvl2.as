@@ -15,6 +15,7 @@ package com.ldd.uqam.minicontrapt
 		public var addPlatform1:FlxSprite;
 		public var addPlatform2:FlxSprite;
 		public var door:FlxSprite;
+		public var deathLine:FlxGroup;
 		public var staticSprite:FlxSprite;
 		
 		public var auSol:Boolean = false;
@@ -99,6 +100,9 @@ package com.ldd.uqam.minicontrapt
 			door.immovable = true;
 			add(door);
 			
+			this.deathLine = RedSquareOfDeath.create_death_line(2400, 448);
+			add(this.deathLine);
+			
 			p1 = new SquarePlayer(50,50);
 			//p1 = new CirclePlayer(50, 50);
 			add(p1);
@@ -111,6 +115,13 @@ package com.ldd.uqam.minicontrapt
 		
 		override public function update():void
 		{
+			if (FlxG.collide(p1, this.deathLine)) {
+				this.p1.kill();
+				this.p1.x = 0;
+				this.p1.y = 0;
+			}
+			FlxG.collide(this.deathLine, _map);
+			
 			var activerAsc:Boolean;
 			var activerDrp1:Boolean;
 			var activerDrp2:Boolean;

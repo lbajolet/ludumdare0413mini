@@ -11,13 +11,14 @@ package com.ldd.uqam.minicontrapt
 	 
 	public class PlayStateLvl1 extends FlxState
 	{
-		public var p1:CirclePlayer;
+		public var p1:SquarePlayer;
 		//public var p2:TrianglePlayer;
 		public var interrupteur:FlxSprite;
 		public var interrupteurOn:FlxSprite;
 		public var door:FlxSprite;
 		public var staticSprite:FlxSprite;
 		public var platform1:FlxSprite;
+		private var deathLine: FlxGroup;
 		public var descD:FlxSprite;
 		public var descG:FlxSprite;
 		public var btnActivate:Boolean = false;
@@ -28,8 +29,6 @@ package com.ldd.uqam.minicontrapt
 		[Embed(source = '../../../../../Assets/button_down.png')] private var ImgBtnDown:Class;
 		[Embed(source = '../../../../../Assets/button_up.png')] private var ImgBtnUp:Class;
 		[Embed(source = '../../../../../Assets/Door.png')] private var ImgDoor:Class;
-		[Embed(source = '../../../../../Assets/descenteDroite.png')] private var DescD:Class;
-		[Embed(source="../../../../../Assets/descenteGauche.png")] public static var DescG:Class;
 		[Embed(source="../../../../../Assets/platformer-lvl-1.jpg")] public static var LevelSprite:Class;
 		private var _map:FlxTilemapExt;
 		
@@ -83,6 +82,12 @@ package com.ldd.uqam.minicontrapt
 			platform1.acceleration.x = 20;
 			platform1.immovable = true;
 			
+			this.deathLine = RedSquareOfDeath.create_death_line(2400, 480);
+			
+			this.deathLine.add(new RedSquareOfDeath(100, 280));
+			
+			add(this.deathLine);
+			
 			//descG = new FlxSprite(320, 368, DescG);
 			//descG.immovable = true;
 			//add(descG);
@@ -91,7 +96,7 @@ package com.ldd.uqam.minicontrapt
 			//descD.immovable = true;
 			//add(descD);
 			
-			p1 = new CirclePlayer(0, 0);
+			p1 = new SquarePlayer(0, 0);
 			add(p1);
 			
 			//p2 = new TrianglePlayer(20, 0);
@@ -105,11 +110,11 @@ package com.ldd.uqam.minicontrapt
 		
 		override public function update():void
 		{
+			if (FlxG.collide(p1, deathLine)) {
+				p1.kill();
+			}
+			
 			FlxG.collide(p1, _map);
-			//FlxG.collide(p1, p2);
-			//FlxG.collide(p2, _map);
-			//FlxCollision.pixelPerfectCheck(p1, descD);
-			//FlxCollision.pixelPerfectCheck(p1, descG);
 			
 			if (btnActivate == false) {
 				var activerInter:Boolean = FlxG.collide(p1, interrupteur);
