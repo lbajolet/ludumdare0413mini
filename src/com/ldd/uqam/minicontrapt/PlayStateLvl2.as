@@ -5,6 +5,7 @@ package com.ldd.uqam.minicontrapt
 	public class PlayStateLvl2 extends FlxState
 	{
 		public var p1:SquarePlayer;
+		//public var p1:CirclePlayer;
 		public var p2:SecondPlayer;
 		public var ascenseur:FlxSprite;
 		public var dropSol1:FlxSprite;
@@ -99,6 +100,7 @@ package com.ldd.uqam.minicontrapt
 			add(door);
 			
 			p1 = new SquarePlayer(50,50);
+			//p1 = new CirclePlayer(50, 50);
 			add(p1);
 			
 			p2 = new SecondPlayer(255,50);

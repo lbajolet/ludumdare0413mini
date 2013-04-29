@@ -32,7 +32,7 @@ package com.ldd.uqam.minicontrapt
 			  this.x = this.x +2;
 			}
 			
-			if (FlxG.keys.justPressed("SPACE") && enSaut == false)
+			if (FlxG.keys.justPressed("UP") && enSaut == false)
 			{
 				enSaut = true
 				this.acceleration.y = 200;
