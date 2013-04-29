@@ -161,6 +161,9 @@ package com.ldd.uqam.minicontrapt
 				p1.respawn();
 				monster.x = -320;
 				monster.y = 335;
+				monster.maxVelocity.x = 50;
+				monster.acceleration.x = 20;
+				monster.immovable = true;
 			}
 			
 			var activerDrp1:Boolean;
@@ -320,6 +323,9 @@ package com.ldd.uqam.minicontrapt
 				p1.respawn();
 				monster.x = -320;
 				monster.y = 335;
+				monster.maxVelocity.x = 50;
+				monster.acceleration.x = 20;
+				monster.immovable = true;
 			}
 			super.update();
 		}
