@@ -86,41 +86,49 @@ package com.ldd.uqam.minicontrapt
 			dropSol1.makeGraphic(20, 4, 0xf0000000);
 			dropSol1.maxVelocity.y = 0;
 			dropSol1.acceleration.y = 0;
+			dropSol1.immovable = true;
 			
 			dropSol2 = new FlxSprite(570, 365);
 			dropSol2.makeGraphic(20, 4, 0xf0000000);
 			dropSol2.maxVelocity.y = 0;
 			dropSol2.acceleration.y = 0;
+			dropSol2.immovable = true;
 			
-			dropSol3 = new FlxSprite(615, 340);
+			dropSol3 = new FlxSprite(610, 340);
 			dropSol3.makeGraphic(20, 4, 0xf0000000);
 			dropSol3.maxVelocity.y = 0;
 			dropSol3.acceleration.y = 0;
+			dropSol3.immovable = true;
 			
-			dropSol4 = new FlxSprite(570, 310);
+			dropSol4 = new FlxSprite(570, 315);
 			dropSol4.makeGraphic(20, 4, 0xf0000000);
 			dropSol4.maxVelocity.y = 0;
 			dropSol4.acceleration.y = 0;
+			dropSol4.immovable = true;
 			
-			dropSol5 = new FlxSprite(598, 275);
+			dropSol5 = new FlxSprite(598, 285);
 			dropSol5.makeGraphic(20, 4, 0xf0000000);
 			dropSol5.maxVelocity.y = 0;
 			dropSol5.acceleration.y = 0;
+			dropSol5.immovable = true;
 			
-			dropSol6 = new FlxSprite(570, 245);
+			dropSol6 = new FlxSprite(570, 255);
 			dropSol6.makeGraphic(20, 4, 0xf0000000);
 			dropSol6.maxVelocity.y = 0;
 			dropSol6.acceleration.y = 0;
+			dropSol6.immovable = true;
 			
-			dropSol7 = new FlxSprite(598, 210);
+			dropSol7 = new FlxSprite(598, 220);
 			dropSol7.makeGraphic(20, 4, 0xf0000000);
 			dropSol7.maxVelocity.y = 0;
 			dropSol7.acceleration.y = 0;
+			dropSol7.immovable = true;
 			
-			dropSol8 = new FlxSprite(570, 180);
+			dropSol8 = new FlxSprite(570, 190);
 			dropSol8.makeGraphic(20, 4, 0xf0000000);
 			dropSol8.maxVelocity.y = 0;
 			dropSol8.acceleration.y = 0;
+			dropSol8.immovable = true;
 			
 			monster = new FlxSprite(-320, 335, ImgMonster);
 			monster.maxVelocity.x = 50;
